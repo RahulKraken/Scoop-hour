@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "595065682673",
+    "firebase_url": "https://project-news-c2fff.firebaseio.com",
+    "project_id": "project-news-c2fff",
+    "storage_bucket": "project-news-c2fff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595065682673:android:3cf8543159ad6bb0",
+        "android_client_info": {
+          "package_name": "com.example.rahuldroid.project_news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595065682673-l5ci9j0ij1j4mfcq9i2vjlobj87ad8o5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rahuldroid.project_news",
+            "certificate_hash": "4fc469e0f08865f559120052dc5347e290f6d47f"
+          }
+        },
+        {
+          "client_id": "595065682673-jb29i9i87vpdsh8e6f57pn4u7t26milp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEWEOL2YVuddFFQwdHaV1SMjDLtAPe7RA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595065682673-jb29i9i87vpdsh8e6f57pn4u7t26milp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

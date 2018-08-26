@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Project-News</string>
+    <string name="error_message_json_recieving">Error getting json from the link</string>
+    <string name="splash_screen_label">Splash Screen</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="img_main_desc">main_image</string>
+    <string name="rv_item_title">TITLE</string>
+    <string name="rv_item_desc">DESCRIPTION</string>
+    <string name="rv_wishlist_desc">wishlist</string>
+    <string name="e_mail_hint">E-mail</string>
+    <string name="password_hint">Password</string>
+    <string name="sign_in_btn_label">Sign in</string>
+    <string name="sign_up_btn_label">or, Sign up</string>
+    <string name="skip_txt_label">skip ></string>
+    <string name="et_e_mail_label">E-mail</string>
+    <string name="et_password_label">Password</string>
+    <string name="et_confirm_password_label">Confirm Password</string>
+    <string name="sign_up_activity_btn_label">Sign up</string>
+    <string name="logo_desc">logo</string>
+    <string name="sign_up_passwords_not_match_error_label">Passwords don\'t match</string>
+    <string name="log_out_menu_item_label">Log out</string>
+    <string name="for_you_page_title">Highlights</string>
+    <string name="search_menu_item_title">Search</string>
+</resources>

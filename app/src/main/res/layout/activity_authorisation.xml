@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AuthorisationActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:src="@drawable/ic_launcher_background"
+            android:scaleType="fitXY"
+            android:layout_weight="4"
+            android:layout_height="0dp"
+            android:layout_width="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/signInBtn"
+                android:onClick="signInClicked"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="6dp"
+                android:layout_weight="2"
+                android:textSize="24sp"
+                android:background="@color/colorPrimaryDark"
+                android:elevation="@dimen/sign_up_btn_elevation"
+                android:text="@string/sign_in_btn_label"
+                android:textColor="#fff" />
+
+        </LinearLayout>
+
+        <TextView
+            android:padding="5dp"
+            android:onClick="skipBtnClicked"
+            android:id="@+id/skipText"
+            android:text="@string/skip_txt_label"
+            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

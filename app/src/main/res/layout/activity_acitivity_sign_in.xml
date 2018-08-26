@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivitySignIn">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_weight="1"
+            android:id="@+id/signUpViewLogo"
+            android:src="@drawable/ic_launcher_background"
+            android:scaleType="fitXY"
+            android:layout_gravity="center_horizontal"
+            android:contentDescription="@string/logo_desc"
+            android:layout_margin="25dp"
+            android:layout_width="300dp"
+            android:layout_height="100dp" />
+
+        <LinearLayout
+            android:layout_weight="4"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_email"
+                android:textSize="24sp"
+                android:layout_margin="5dp"
+                android:hint="@string/et_e_mail_label"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:textSize="24sp"
+                android:layout_margin="5dp"
+                android:hint="@string/et_password_label"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/et_password_confirm"
+                android:textSize="24sp"
+                android:layout_margin="5dp"
+                android:hint="@string/et_confirm_password_label"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <Button
+            android:layout_weight="1"
+            android:onClick="signUpClicked"
+            android:text="@string/sign_up_activity_btn_label"
+            android:layout_gravity="center"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="#fff"
+            android:layout_margin="20dp"
+            android:layout_width="150dp"
+            android:layout_height="10dp" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
