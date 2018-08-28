@@ -1,11 +1,19 @@
 package com.example.rahuldroid.project_news.ContentRecievers;
 
+import android.util.Log;
+
 public class UrlCreator {
+
+    private static final String TAG = "UrlCreator";
 
     private Constants constants;
     private String BASE_URL;
 
-    // This method returns the base url on which the NetworkUtils class method work to provide the content from various categories.
+    /**
+     * returns the base url on which the NetworkUtils class method work to provide the content from various categories.
+     * @param index
+     * @return url
+     */
     public String returnUrl(int index) {
         // Returns the base url of the news Api API
         constants = new Constants();
@@ -31,12 +39,43 @@ public class UrlCreator {
         return bUrl.concat(string).concat(constants.API_KEY);
     }
 
-    // BASE URL FOR THE API
-//    public final String BASE_URL = "https://newsapi.org/v2/";
-    // API KEY
-//    public final String API_KEY = "&apiKey=01fe6663a4aa40ed9dd0f348b967bf69";
-
     private String modifyUrl(String string) {
         return string.concat("top-headlines?country=in&category=");
+    }
+
+    /**
+     * Returns url for search action on @param 'keyword'
+     * @param keyword
+     * @return url
+     */
+    public String createUrlForSearch(String keyword) {
+
+        // https://newsapi.org/v2/everything?q=narendra+modi&pageSize=50
+        // &language=en&from=2018-08-25&to=2018-08-26&sortBy=relevency&apiKey=01fe6663a4aa40ed9dd0f348b967bf69
+
+        // Returns the base url of the news Api API
+        constants = new Constants();
+        BASE_URL = constants.BASE_URL;
+
+        Log.d(TAG, "createUrlForSearch: invoked successfully");
+
+        keyword = prepareKeyword(keyword);
+
+        Log.d(TAG, "createUrlForSearch: prepared keyword - " + keyword);
+
+        String url = BASE_URL.concat("everything?q=")
+                .concat(keyword)
+                .concat("&pageSize=50")
+                .concat("&language=en")
+                .concat("&from=2018-08-25&to=2018-08-26")
+                .concat("&sortBy=relevency")
+                .concat(constants.API_KEY);
+
+        Log.d(TAG, "createUrlForSearch: " + url);
+        return url;
+    }
+
+    private String prepareKeyword(String keyword) {
+        return keyword.replace(" ", "+");
     }
 }

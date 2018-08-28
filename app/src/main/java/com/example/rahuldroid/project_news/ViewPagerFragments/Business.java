@@ -53,7 +53,7 @@ public class Business extends Fragment {
         protected Void doInBackground(Integer... integers) {
             data = new ArrayList<>();
             NetworkUtils utils = new NetworkUtils();
-            data = utils.returnContent(integers[0]);
+            data = utils.returnContent(integers[0], null);
             for (DataModel dataModel : data) {
                 Log.d("TAG", dataModel.getTitle() + "\t" + dataModel.getArticleUrl());
             }

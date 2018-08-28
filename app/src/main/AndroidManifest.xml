@@ -29,6 +29,8 @@
             android:parentActivityName=".ForYouActivity" />
         <activity android:name=".AuthorisationActivity" />
         <activity android:name=".ActivitySignIn" />
+        <activity android:name=".SearchActivity"
+            android:parentActivityName=".ForYouActivity" />
     </application>
 
 </manifest>

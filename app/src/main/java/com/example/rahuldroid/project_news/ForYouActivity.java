@@ -94,6 +94,7 @@ public class ForYouActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_search:
+                startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                 break;
             case 1:
                 logout();
