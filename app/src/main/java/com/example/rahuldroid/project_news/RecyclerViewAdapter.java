@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,8 @@ import java.util.List;
 // This class is the Adapter for the recycler view to be displayed in every page of the view pager fragments.
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
+    private static final String TAG = "RecyclerViewAdapter";
+
     // Needed to provide content to the viewHolder to populate it.
     private List<DataModel> data;
     private Context context;
@@ -32,6 +35,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.data = data;
         this.context = context;
         inflater = LayoutInflater.from(context);
+
+        Log.d(TAG, "RecyclerViewAdapter: " + context.getClass().getSimpleName());
     }
 
     @NonNull
@@ -82,10 +87,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             // Do this when an item in the recycler View is clicked.
             if (v.getId() != R.id.bookmark_btn) {
                 // Anything in the layout but the bookmark button is clicked, it opens the article in a web view.
-                Intent intent = new Intent(context, ArticleContent.class);
-                intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
-                intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
-                context.startActivity(intent);
+                if (context.getClass().getSimpleName().equals(ForYouActivity.class.getSimpleName())) {
+                    // If activity is invoked from ForYouActivity
+
+                    Intent intent = new Intent(context, ArticleContent.class);
+                    intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
+                    intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
+
+                    Log.d(TAG, "onClick: invoked article activity through forYouActivity context");
+
+                    context.startActivity(intent);
+                } else if (context.getClass().getSimpleName().equals(SearchActivity.class.getSimpleName())) {
+                    // If activity is invoked from SearchActivity
+                    Intent intent = new Intent(context, SearchArticleActivity.class);
+                    intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
+                    intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
+
+                    Log.d(TAG, "onClick: invoked article activity through SearchActivity context");
+
+                    context.startActivity(intent);
+                }
             } else {
                 // The bookmark button is clicked and it will change it's color.
                 Toast.makeText(context, "I don't know what to do yet", Toast.LENGTH_LONG).show();

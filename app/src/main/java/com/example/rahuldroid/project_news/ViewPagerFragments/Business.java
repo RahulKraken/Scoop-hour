@@ -15,6 +15,7 @@ import android.widget.ProgressBar;
 
 import com.example.rahuldroid.project_news.ContentRecievers.DataModel;
 import com.example.rahuldroid.project_news.ContentRecievers.NetworkUtils;
+import com.example.rahuldroid.project_news.ForYouActivity;
 import com.example.rahuldroid.project_news.R;
 import com.example.rahuldroid.project_news.RecyclerViewAdapter;
 
