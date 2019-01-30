@@ -2,7 +2,6 @@ package com.example.rahuldroid.project_news;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -80,6 +79,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             img_main = itemView.findViewById(R.id.img_main);
             img_bookmark = itemView.findViewById(R.id.bookmark_btn);
             itemView.setOnClickListener(this);
+            img_bookmark.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(context, "Bookmark btn clicked", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         @Override

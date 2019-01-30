@@ -38,8 +38,7 @@ public class Sports extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.layout_sports, container, false);
-        SportsNetworkTask task = new SportsNetworkTask();
-        task.execute(FRAG_ID);
+        new SportsNetworkTask().execute(FRAG_ID);
         return rootView;
     }
 

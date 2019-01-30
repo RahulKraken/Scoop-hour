@@ -24,4 +24,5 @@
     <string name="for_you_page_title">Highlights</string>
     <string name="search_menu_item_title">Search</string>
     <string name="et_search_hint">Enter search text here</string>
+    <string name="news_app">News App</string>
 </resources>

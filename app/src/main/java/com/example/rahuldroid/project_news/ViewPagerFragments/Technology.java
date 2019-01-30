@@ -38,12 +38,12 @@ public class Technology extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.layout_technology, container, false);
-        TechnologyNetworkTask task = new TechnologyNetworkTask();
-        task.execute(FRAG_ID);
+        new TechnologyNetworkTask().execute(FRAG_ID);
         return rootView;
     }
 
     class TechnologyNetworkTask extends AsyncTask<Integer, Void, Void> {
+
 
         // This is the data model that we are going to use to populate the recycler view.
         private List<DataModel> data;

@@ -38,8 +38,7 @@ public class Entertainment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.layout_entertainment, container, false);
-        EntertainmentNetworkTask task = new EntertainmentNetworkTask();
-        task.execute(FRAG_ID);
+        new EntertainmentNetworkTask().execute(FRAG_ID);
         return rootView;
     }
 

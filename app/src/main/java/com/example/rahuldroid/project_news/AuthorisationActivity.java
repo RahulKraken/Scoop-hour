@@ -46,7 +46,7 @@ public class AuthorisationActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1) {
+        if (requestCode == 1 && mAuth.getCurrentUser() != null) {
             startActivity(new Intent(this, ForYouActivity.class));
             Toast.makeText(this, mAuth.getCurrentUser().getEmail(), Toast.LENGTH_LONG).show();
             finish();

@@ -38,8 +38,7 @@ public class Science extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.layout_science, container, false);
-        ScienceNetworkTask task = new ScienceNetworkTask();
-        task.execute(FRAG_ID);
+        new ScienceNetworkTask().execute(FRAG_ID);
         return rootView;
     }
 

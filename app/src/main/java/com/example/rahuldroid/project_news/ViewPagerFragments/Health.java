@@ -38,8 +38,7 @@ public class Health extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.layout_health, container, false);
-        HealthNetworkTask task = new HealthNetworkTask();
-        task.execute(FRAG_ID);
+        new HealthNetworkTask().execute(FRAG_ID);
         return rootView;
     }
 

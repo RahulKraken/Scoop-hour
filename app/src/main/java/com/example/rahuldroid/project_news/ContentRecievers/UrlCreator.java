@@ -67,7 +67,6 @@ public class UrlCreator {
                 .concat(keyword)
                 .concat("&pageSize=50")
                 .concat("&language=en")
-                .concat("&from=2018-08-25&to=2018-08-26")
                 .concat("&sortBy=relevency")
                 .concat(constants.API_KEY);
 

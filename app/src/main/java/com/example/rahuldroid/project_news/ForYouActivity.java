@@ -22,13 +22,10 @@ import com.example.rahuldroid.project_news.ViewPagerFragments.Health;
 import com.example.rahuldroid.project_news.ViewPagerFragments.Science;
 import com.example.rahuldroid.project_news.ViewPagerFragments.Sports;
 import com.example.rahuldroid.project_news.ViewPagerFragments.Technology;
-import com.google.android.gms.common.util.CrashUtils;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class ForYouActivity extends AppCompatActivity {
 
@@ -138,6 +135,7 @@ public class ForYouActivity extends AppCompatActivity {
         viewPagerAdapter.addFragments(new Technology(), constants.categoryList.get(4));
         viewPagerAdapter.addFragments(new Science(), constants.categoryList.get(5));
         viewPagerAdapter.addFragments(new Health(), constants.categoryList.get(6));
+        viewPager.setOffscreenPageLimit(5);
         viewPager.setAdapter(viewPagerAdapter);
     }
 

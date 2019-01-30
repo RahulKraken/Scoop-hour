@@ -39,8 +39,7 @@ public class Business extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.layout_business, container, false);
-        BusinessNetworkTask task = new BusinessNetworkTask();
-        task.execute(FRAG_ID);
+        new BusinessNetworkTask().execute(FRAG_ID);
         return rootView;
     }
 

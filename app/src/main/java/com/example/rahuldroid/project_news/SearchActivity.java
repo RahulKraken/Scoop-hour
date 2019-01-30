@@ -7,11 +7,14 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.rahuldroid.project_news.ContentRecievers.DataModel;
 import com.example.rahuldroid.project_news.ContentRecievers.NetworkUtils;
@@ -43,6 +46,18 @@ public class SearchActivity extends AppCompatActivity {
 
         // setting up the search edit text and search btn
         final EditText et_search = findViewById(R.id.et_search);
+        et_search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                boolean handled = false;
+                if (i == EditorInfo.IME_ACTION_SEARCH) {
+                    searchKeyword = et_search.getText().toString();
+                    searchForContent(searchKeyword);
+                    handled = true;
+                }
+                return handled;
+            }
+        });
         ImageButton searchBtn = findViewById(R.id.btn_search);
 
         // setting the on click listener to the searchBtn
@@ -60,8 +75,7 @@ public class SearchActivity extends AppCompatActivity {
      * @param keyword
      */
     private void searchForContent(String keyword) {
-        SearchNetworkTask task = new SearchNetworkTask();
-        task.execute(keyword);
+        new SearchNetworkTask().execute(keyword);
         hideSoftKeyboard();
     }
 
