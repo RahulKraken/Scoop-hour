@@ -136,8 +136,8 @@ public class SearchActivity extends AppCompatActivity {
             progressBar.setVisibility(View.INVISIBLE);
 
             recyclerView.setVisibility(View.VISIBLE);
-            RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, getApplicationContext());
-            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+            RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, SearchActivity.this);
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SearchActivity.this);
 
             recyclerView.setAdapter(adapter);
             recyclerView.setLayoutManager(layoutManager);

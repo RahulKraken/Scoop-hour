@@ -23,6 +23,7 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
+    private FirebaseHelper firebaseHelper;
 
     // Needed to provide content to the viewHolder to populate it.
     private List<DataModel> data;
@@ -34,6 +35,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.data = data;
         this.context = context;
         inflater = LayoutInflater.from(context);
+
+        firebaseHelper = new FirebaseHelper(context);
 
         Log.d(TAG, "RecyclerViewAdapter: " + context.getClass().getSimpleName());
     }
@@ -82,19 +85,20 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             img_bookmark.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(context, "Bookmark btn clicked", Toast.LENGTH_SHORT).show();
+                    DataModel article = data.get(getAdapterPosition());
+                    firebaseHelper.addArticleReadLater(article);
                 }
             });
         }
 
         @Override
         public void onClick(View v) {
+            Log.d(TAG, "onClick: " + context.getClass().getSimpleName());
             // Do this when an item in the recycler View is clicked.
             if (v.getId() != R.id.bookmark_btn) {
                 // Anything in the layout but the bookmark button is clicked, it opens the article in a web view.
                 if (context.getClass().getSimpleName().equals(ForYouActivity.class.getSimpleName())) {
                     // If activity is invoked from ForYouActivity
-
                     Intent intent = new Intent(context, ArticleContent.class);
                     intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
                     intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
@@ -104,13 +108,24 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     context.startActivity(intent);
                 } else if (context.getClass().getSimpleName().equals(SearchActivity.class.getSimpleName())) {
                     // If activity is invoked from SearchActivity
-                    Intent intent = new Intent(context, SearchArticleActivity.class);
+                    Intent intent = new Intent(context, ArticleContent.class);
                     intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
                     intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
 
                     Log.d(TAG, "onClick: invoked article activity through SearchActivity context");
 
                     context.startActivity(intent);
+                } else if (context.getClass().getSimpleName().equals(ReadLaterActivity.class.getSimpleName())) {
+                    // If activity is invoked from ReadLaterActivity
+                    Intent intent = new Intent(context, ArticleContent.class);
+                    intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
+                    intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
+
+                    Log.d(TAG, "onClick: invoked article activity through ReadLaterActivity context");
+
+                    context.startActivity(intent);
+                } else {
+                    Toast.makeText(context, "something wrong happened", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 // The bookmark button is clicked and it will change it's color.

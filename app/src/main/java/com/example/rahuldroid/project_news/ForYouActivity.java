@@ -77,7 +77,8 @@ public class ForYouActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.for_you_activity_overflow_menu, menu);
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            menu.add(0, 1, 0, getResources().getString(R.string.log_out_menu_item_label));
+            menu.add(0, 1, 0, getResources().getString(R.string.read_later_menu_label));
+            menu.add(0, 2, 0, getResources().getString(R.string.log_out_menu_item_label));
         }
         return super.onCreateOptionsMenu(menu);
     }
@@ -93,11 +94,18 @@ public class ForYouActivity extends AppCompatActivity {
             case R.id.action_search:
                 startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                 break;
-            case 1:
+            case 2:
                 logout();
+                break;
+            case 1:
+                actionReadLater();
                 break;
         }
         return true;
+    }
+
+    private void actionReadLater() {
+        startActivity(new Intent(this, ReadLaterActivity.class));
     }
 
     private void logout() {

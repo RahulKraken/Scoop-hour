@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ReadLaterActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -25,11 +25,11 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop" />
         <activity
-            android:name=".ArticleContent"
-            android:parentActivityName=".ForYouActivity" />
+            android:name=".ArticleContent" />
         <activity android:name=".AuthorisationActivity" />
         <activity android:name=".ActivitySignIn" />
-        <activity android:name=".SearchActivity"
+        <activity
+            android:name=".SearchActivity"
             android:parentActivityName=".ForYouActivity" />
     </application>
 
