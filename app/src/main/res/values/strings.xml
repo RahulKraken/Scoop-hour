@@ -24,7 +24,7 @@
     <string name="for_you_page_title">Highlights</string>
     <string name="search_menu_item_title">Search</string>
     <string name="et_search_hint">Enter search text here</string>
-    <string name="news_app">News App</string>
+    <string name="news_app">Scoop Hour</string>
 
     <!-- Firebase database node keys -->
     <string name="node_articles">articles</string>
@@ -36,4 +36,5 @@
     <string name="firebase_preference_title">firebase_preferences</string>
     <string name="read_later_menu_label">Bookmarked</string>
     <string name="read_later_action_bar_title">Bookmarked</string>
+    <string name="users_node_label">users</string>
 </resources>

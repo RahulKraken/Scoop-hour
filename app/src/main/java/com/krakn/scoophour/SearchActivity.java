@@ -1,4 +1,4 @@
-package com.example.rahuldroid.project_news;
+package com.krakn.scoophour;
 
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -16,9 +16,8 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.rahuldroid.project_news.ContentRecievers.DataModel;
-import com.example.rahuldroid.project_news.ContentRecievers.NetworkUtils;
-import com.example.rahuldroid.project_news.ContentRecievers.UrlCreator;
+import com.krakn.scoophour.ContentRecievers.DataModel;
+import com.krakn.scoophour.ContentRecievers.NetworkUtils;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.rahuldroid.project_news.ContentRecievers;
+package com.krakn.scoophour.ContentRecievers;
 
 import android.util.Log;
 

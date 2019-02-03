@@ -1,4 +1,4 @@
-package com.example.rahuldroid.project_news.ViewPagerFragments;
+package com.krakn.scoophour.ViewPagerFragments;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.example.rahuldroid.project_news.ContentRecievers.DataModel;
-import com.example.rahuldroid.project_news.ContentRecievers.NetworkUtils;
-import com.example.rahuldroid.project_news.R;
-import com.example.rahuldroid.project_news.RecyclerViewAdapter;
+import com.krakn.scoophour.ContentRecievers.DataModel;
+import com.krakn.scoophour.ContentRecievers.NetworkUtils;
+import com.krakn.scoophour.R;
+import com.krakn.scoophour.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

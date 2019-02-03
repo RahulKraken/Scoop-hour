@@ -1,4 +1,4 @@
-package com.example.rahuldroid.project_news;
+package com.krakn.scoophour;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

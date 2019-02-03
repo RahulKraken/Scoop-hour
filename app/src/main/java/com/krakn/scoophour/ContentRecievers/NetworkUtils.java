@@ -1,9 +1,9 @@
-package com.example.rahuldroid.project_news.ContentRecievers;
+package com.krakn.scoophour.ContentRecievers;
 
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.example.rahuldroid.project_news.R;
+import com.krakn.scoophour.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

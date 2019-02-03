@@ -1,4 +1,4 @@
-package com.example.rahuldroid.project_news;
+package com.krakn.scoophour;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.example.rahuldroid.project_news.ContentRecievers.DataModel;
+import com.krakn.scoophour.ContentRecievers.DataModel;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
@@ -65,7 +65,7 @@ public class ReadLaterActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                throw databaseError.toException();
+//                throw databaseError.toException();
             }
         });
     }

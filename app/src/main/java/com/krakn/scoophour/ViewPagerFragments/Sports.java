@@ -1,4 +1,4 @@
-package com.example.rahuldroid.project_news.ViewPagerFragments;
+package com.krakn.scoophour.ViewPagerFragments;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,21 +13,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.example.rahuldroid.project_news.ContentRecievers.DataModel;
-import com.example.rahuldroid.project_news.ContentRecievers.NetworkUtils;
-import com.example.rahuldroid.project_news.R;
-import com.example.rahuldroid.project_news.RecyclerViewAdapter;
+import com.krakn.scoophour.ContentRecievers.DataModel;
+import com.krakn.scoophour.ContentRecievers.NetworkUtils;
+import com.krakn.scoophour.R;
+import com.krakn.scoophour.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Technology extends Fragment {
+public class Sports extends Fragment {
 
     View rootView;
 
     // This is the unique id of the fragment.
-    private final int FRAG_ID = 4;
+    private final int FRAG_ID = 3;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,13 +37,12 @@ public class Technology extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.layout_technology, container, false);
-        new TechnologyNetworkTask().execute(FRAG_ID);
+        rootView = inflater.inflate(R.layout.layout_sports, container, false);
+        new SportsNetworkTask().execute(FRAG_ID);
         return rootView;
     }
 
-    class TechnologyNetworkTask extends AsyncTask<Integer, Void, Void> {
-
+    class SportsNetworkTask extends AsyncTask<Integer, Void, Void> {
 
         // This is the data model that we are going to use to populate the recycler view.
         private List<DataModel> data;
@@ -63,7 +62,7 @@ public class Technology extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBar = rootView.findViewById(R.id.technologyProgress_bar);
+            progressBar = rootView.findViewById(R.id.sportsProgress_bar);
             progressBar.setVisibility(View.VISIBLE);
         }
 
@@ -72,7 +71,7 @@ public class Technology extends Fragment {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             progressBar.setVisibility(View.INVISIBLE);
-            RecyclerView recyclerView = rootView.findViewById(R.id.technologyRecyclerView);
+            RecyclerView recyclerView = rootView.findViewById(R.id.sportsRecyclerView);
             RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, getContext());
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
             recyclerView.setAdapter(adapter);

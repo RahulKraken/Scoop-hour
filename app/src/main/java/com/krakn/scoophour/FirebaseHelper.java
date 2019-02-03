@@ -1,16 +1,14 @@
-package com.example.rahuldroid.project_news;
+package com.krakn.scoophour;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.rahuldroid.project_news.ContentRecievers.DataModel;
+import com.krakn.scoophour.ContentRecievers.DataModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,7 +52,7 @@ public class FirebaseHelper {
         for the user id.
          */
         if (mAuth.getCurrentUser() != null) {
-            mRef = mDatabase.getReference().child(mAuth.getCurrentUser().getUid());
+            mRef = mDatabase.getReference().child(context.getString(R.string.users_node_label)).child(mAuth.getCurrentUser().getUid());
             counterRef = mRef.child(context.getResources().getString(R.string.node_counter));
             readLaterRef = mRef.child(context.getResources().getString(R.string.node_articles))
                     .child(context.getResources().getString(R.string.node_read_later));
@@ -114,6 +112,12 @@ public class FirebaseHelper {
             READ_LATER_COUNT = READ_LATER_COUNT + 1;
             counterRef.setValue(READ_LATER_COUNT);
             return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(context, "Article Bookmarked", Toast.LENGTH_SHORT).show();
         }
     }
 

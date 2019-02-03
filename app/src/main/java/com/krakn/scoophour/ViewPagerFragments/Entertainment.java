@@ -1,11 +1,10 @@
-package com.example.rahuldroid.project_news.ViewPagerFragments;
+package com.krakn.scoophour.ViewPagerFragments;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,21 +13,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
-import com.example.rahuldroid.project_news.ContentRecievers.DataModel;
-import com.example.rahuldroid.project_news.ContentRecievers.NetworkUtils;
-import com.example.rahuldroid.project_news.R;
-import com.example.rahuldroid.project_news.RecyclerViewAdapter;
+import com.krakn.scoophour.ContentRecievers.DataModel;
+import com.krakn.scoophour.ContentRecievers.NetworkUtils;
+import com.krakn.scoophour.R;
+import com.krakn.scoophour.RecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class General extends Fragment {
+public class Entertainment extends Fragment {
 
     View rootView;
 
     // This is the unique id of the fragment.
-    private final int FRAG_ID = 0;
+    private final int FRAG_ID = 2;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,12 +37,12 @@ public class General extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.layout_general, container, false);
-        new GeneralNetworkTask().execute(FRAG_ID);
+        rootView = inflater.inflate(R.layout.layout_entertainment, container, false);
+        new EntertainmentNetworkTask().execute(FRAG_ID);
         return rootView;
     }
 
-    class GeneralNetworkTask extends AsyncTask<Integer, Integer, Void> {
+    class EntertainmentNetworkTask extends AsyncTask<Integer, Void, Void> {
 
         // This is the data model that we are going to use to populate the recycler view.
         private List<DataModel> data;
@@ -63,7 +62,7 @@ public class General extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            progressBar = rootView.findViewById(R.id.generalProgress_bar);
+            progressBar = rootView.findViewById(R.id.entertainmentProgress_bar);
             progressBar.setVisibility(View.VISIBLE);
         }
 
@@ -72,7 +71,7 @@ public class General extends Fragment {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             progressBar.setVisibility(View.INVISIBLE);
-            RecyclerView recyclerView = rootView.findViewById(R.id.generalRecyclerView);
+            RecyclerView recyclerView = rootView.findViewById(R.id.entertainmentRecyclerView);
             RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, getContext());
             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
             recyclerView.setAdapter(adapter);

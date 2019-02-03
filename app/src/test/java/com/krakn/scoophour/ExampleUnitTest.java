@@ -1,4 +1,4 @@
-package com.example.rahuldroid.project_news;
+package com.krakn.scoophour;
 
 import org.junit.Test;
 

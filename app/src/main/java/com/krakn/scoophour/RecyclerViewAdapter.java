@@ -1,4 +1,4 @@
-package com.example.rahuldroid.project_news;
+package com.krakn.scoophour;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,10 +14,11 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.rahuldroid.project_news.ContentRecievers.DataModel;
+import com.krakn.scoophour.ContentRecievers.DataModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 // This class is the Adapter for the recycler view to be displayed in every page of the view pager fragments.
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -34,11 +35,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.data = new ArrayList<>();
         this.data = data;
         this.context = context;
-        inflater = LayoutInflater.from(context);
-
-        firebaseHelper = new FirebaseHelper(context);
-
-        Log.d(TAG, "RecyclerViewAdapter: " + context.getClass().getSimpleName());
+        if (context != null) {
+            inflater = LayoutInflater.from(context);
+            firebaseHelper = new FirebaseHelper(context);
+            Log.d(TAG, "RecyclerViewAdapter: " + Objects.requireNonNull(context).getClass().getSimpleName());
+        }
     }
 
     @NonNull

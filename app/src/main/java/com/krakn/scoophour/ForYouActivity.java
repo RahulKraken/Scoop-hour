@@ -1,4 +1,4 @@
-package com.example.rahuldroid.project_news;
+package com.krakn.scoophour;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,14 +14,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.rahuldroid.project_news.ContentRecievers.Constants;
-import com.example.rahuldroid.project_news.ViewPagerFragments.Business;
-import com.example.rahuldroid.project_news.ViewPagerFragments.Entertainment;
-import com.example.rahuldroid.project_news.ViewPagerFragments.General;
-import com.example.rahuldroid.project_news.ViewPagerFragments.Health;
-import com.example.rahuldroid.project_news.ViewPagerFragments.Science;
-import com.example.rahuldroid.project_news.ViewPagerFragments.Sports;
-import com.example.rahuldroid.project_news.ViewPagerFragments.Technology;
+import com.krakn.scoophour.ContentRecievers.Constants;
+import com.krakn.scoophour.ViewPagerFragments.Business;
+import com.krakn.scoophour.ViewPagerFragments.Entertainment;
+import com.krakn.scoophour.ViewPagerFragments.General;
+import com.krakn.scoophour.ViewPagerFragments.Health;
+import com.krakn.scoophour.ViewPagerFragments.Science;
+import com.krakn.scoophour.ViewPagerFragments.Sports;
+import com.krakn.scoophour.ViewPagerFragments.Technology;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;

@@ -8,18 +8,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:595065682673:android:3cf8543159ad6bb0",
+        "mobilesdk_app_id": "1:595065682673:android:2c38ac95bb7bd8c1",
         "android_client_info": {
-          "package_name": "com.example.rahuldroid.project_news"
+          "package_name": "com.krakn.scoophour"
         }
       },
       "oauth_client": [
         {
-          "client_id": "595065682673-l5ci9j0ij1j4mfcq9i2vjlobj87ad8o5.apps.googleusercontent.com",
+          "client_id": "595065682673-1kqu2eiuqn613tbobq0vvpieg242gij6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.rahuldroid.project_news",
-            "certificate_hash": "4fc469e0f08865f559120052dc5347e290f6d47f"
+            "package_name": "com.krakn.scoophour",
+            "certificate_hash": "c77a60102815013cd16ce7aef1a5bb47d9090862"
           }
         },
         {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.rahuldroid.project_news">
+    package="com.krakn.scoophour">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,9 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ReadLaterActivity" />
+        <activity android:name="com.krakn.scoophour.ReadLaterActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.krakn.scoophour.MainActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,16 +23,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ForYouActivity"
+            android:name="com.krakn.scoophour.ForYouActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop" />
         <activity
-            android:name=".ArticleContent" />
-        <activity android:name=".AuthorisationActivity" />
-        <activity android:name=".ActivitySignIn" />
+            android:name="com.krakn.scoophour.ArticleContent" />
+        <activity android:name="com.krakn.scoophour.AuthorisationActivity" />
+        <activity android:name="com.krakn.scoophour.ActivitySignIn" />
         <activity
-            android:name=".SearchActivity"
-            android:parentActivityName=".ForYouActivity" />
+            android:name="com.krakn.scoophour.SearchActivity"
+            android:parentActivityName="com.krakn.scoophour.ForYouActivity" />
     </application>
 
 </manifest>
