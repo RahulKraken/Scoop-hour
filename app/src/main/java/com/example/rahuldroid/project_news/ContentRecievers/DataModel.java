@@ -1,14 +1,18 @@
 package com.example.rahuldroid.project_news.ContentRecievers;
 
+import android.support.annotation.Nullable;
+
 public class DataModel {
     private String title, description;
     private String imageUrl, articleUrl;
     private String sourceName;
+    private int id;
 
     public DataModel() {
     }
 
-    public DataModel(String title, String description, String imageUrl, String articleUrl, String sourceName) {
+    public DataModel(@Nullable int id, String title, String description, String imageUrl, String articleUrl, String sourceName) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.imageUrl = imageUrl;
@@ -54,5 +58,13 @@ public class DataModel {
 
     public void setArticleUrl(String articleUrl) {
         this.articleUrl = articleUrl;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

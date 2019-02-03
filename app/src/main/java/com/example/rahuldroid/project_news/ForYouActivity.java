@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class ForYouActivity extends AppCompatActivity {
 
@@ -52,7 +53,7 @@ public class ForYouActivity extends AppCompatActivity {
         // Adding the custom toolbar
         android.support.v7.widget.Toolbar toolbar = findViewById(R.id.tabLayoutToolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.for_you_page_title));
+        Objects.requireNonNull(getSupportActionBar()).setTitle(getResources().getString(R.string.for_you_page_title));
 
         // Refer to the viewpager and tab layout
         ViewPager viewPager = findViewById(R.id.viewpager);

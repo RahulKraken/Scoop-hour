@@ -11,13 +11,14 @@
     <color name="colorSecondaryText">#fafafa</color>
     -->
 
-    <color name="colorPrimary">#ff2626</color>
-    <color name="colorPrimaryDark">#c80000</color>
-    <color name="colorPrimaryLight">#ff4f4f</color>
-    <color name="colorSecondary">#ffa126</color>
-    <color name="colorSecondaryLight">#ffd24f</color>
-    <color name="colorSecondaryDark">#c87100</color>
+    <color name="colorPrimary">#ff6d00</color>
+    <color name="colorPrimaryDark">#c43c00</color>
+    <color name="colorPrimaryLight">#ff9e40</color>
+    <color name="colorSecondary">#00e5ff</color>
+    <color name="colorSecondaryLight">#6effff</color>
+    <color name="colorSecondaryDark">#00b2cc</color>
     <color name="colorAccent">#4793ca</color>
     <color name="colorPrimaryText">#000000</color>
-    <color name="colorSecondaryText">#fafafa</color>
+    <color name="colorSecondaryText">#000000</color>
+    <color name="grey">#D3D3D3</color>
 </resources>

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -15,9 +17,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.Objects;
 
 public class FirebaseHelper {
     /**
@@ -60,32 +59,32 @@ public class FirebaseHelper {
             readLaterRef = mRef.child(context.getResources().getString(R.string.node_articles))
                     .child(context.getResources().getString(R.string.node_read_later));
 
-            counterRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    Log.d(TAG, "onDataChange: counter value - " + dataSnapshot.getValue());
-                    if (dataSnapshot.getValue() != null) {
-                        editor.putInt(context.getResources().getString(R.string.num_read_later_articles),
-                                Integer.valueOf(dataSnapshot.getValue().toString()));
-                        editor.apply();
-                        editor.commit();
-                        READ_LATER_COUNT = firebasePreferences.getInt(context.getResources().getString(R.string.num_read_later_articles), 0);
-//                        Log.d(TAG, "onDataChange: READ_LATER_COUNT - " + READ_LATER_COUNT);
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
+            updateArticleCount();
         } else {
             Log.d(TAG, "FirebaseHelper: current ref is null");
         }
     }
 
-    public void commit(Bundle bundle) {
-        mRef.setValue("This is me indeed!");
+    private void updateArticleCount() {
+        counterRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    Log.d(TAG, "onDataChange: counter value - " + dataSnapshot.getValue());
+                if (dataSnapshot.getValue() != null) {
+                    editor.putInt(context.getResources().getString(R.string.num_read_later_articles),
+                            Integer.valueOf(dataSnapshot.getValue().toString()));
+                    editor.apply();
+                    editor.commit();
+                    READ_LATER_COUNT = firebasePreferences.getInt(context.getResources().getString(R.string.num_read_later_articles), 0);
+//                        Log.d(TAG, "onDataChange: READ_LATER_COUNT - " + READ_LATER_COUNT);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     /*
@@ -95,25 +94,39 @@ public class FirebaseHelper {
     public void addArticleReadLater(DataModel article) {
         if (mAuth.getCurrentUser() != null) {
             Log.d(TAG, "addArticleReadLater: current ref - " + mRef.toString());
-            new FirebaseTask().execute(article);
+            new FirebaseAddTask().execute(article);
         } else {
             Toast.makeText(context, "No user signed in!", Toast.LENGTH_SHORT).show();
         }
     }
 
-    class FirebaseTask extends AsyncTask<DataModel, Void, Void> {
+    class FirebaseAddTask extends AsyncTask<DataModel, Void, Void> {
 
         @Override
         protected Void doInBackground(DataModel... dataModels) {
-            readLaterRef.child(String.valueOf(READ_LATER_COUNT)).setValue(dataModels[0]);
+            DataModel model = new DataModel(READ_LATER_COUNT,
+                    dataModels[0].getTitle(),
+                    dataModels[0].getDescription(),
+                    dataModels[0].getImageUrl(),
+                    dataModels[0].getArticleUrl(),
+                    dataModels[0].getSourceName());
+            readLaterRef.child(String.valueOf(model.getId())).setValue(model);
             READ_LATER_COUNT = READ_LATER_COUNT + 1;
             counterRef.setValue(READ_LATER_COUNT);
             return null;
         }
+    }
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-        }
+    /*
+    ------------------------------------------------------ Delete article from database ----------------------------------------------------
+     */
+
+    public void deleteArticle(int adapterPosition) {
+        readLaterRef.child(String.valueOf(adapterPosition)).removeValue(new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                Toast.makeText(context, "Article removed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

@@ -1,17 +1,15 @@
 package com.example.rahuldroid.project_news;
 
-import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
-import android.support.v7.widget.Toolbar;
 
 import com.example.rahuldroid.project_news.ContentRecievers.DataModel;
 import com.google.firebase.database.DataSnapshot;
@@ -53,7 +51,9 @@ public class ReadLaterActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    data.add(ds.getValue(DataModel.class));
+                    if (ds.getValue() != null) {
+                        data.add(ds.getValue(DataModel.class));
+                    }
                     Log.d(TAG, "onDataChange: " + Objects.requireNonNull(ds.getValue()).toString());
                 }
                 rlProgressBar.setVisibility(View.INVISIBLE);

@@ -58,10 +58,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         // Inflating the main img with glide.
         Glide.with(context).load(data.get(position).getImageUrl())
                 .apply(new RequestOptions()
-                        .placeholder(R.color.colorPrimaryLight)
-                        .error(R.color.colorPrimaryLight))
+                        .placeholder(R.color.grey)
+                        .error(R.color.grey))
                 .into(holder.img_main);
-
     }
 
     // Returns the number of views in the viewHolder.
@@ -70,7 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return data.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
 
         private TextView tv_title, tv_desc;
         private ImageView img_main, img_bookmark;
@@ -82,6 +81,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             img_main = itemView.findViewById(R.id.img_main);
             img_bookmark = itemView.findViewById(R.id.bookmark_btn);
             itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
             img_bookmark.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -132,6 +132,15 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Toast.makeText(context, "I don't know what to do yet", Toast.LENGTH_LONG).show();
                 img_bookmark.setImageResource(R.drawable.ic_bookmark_activated);
             }
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            Log.d(TAG, "onLongClick: " + context.getClass().getSimpleName());
+            if (view.getId() != R.id.bookmark_btn && context.getClass().getSimpleName().equals(ReadLaterActivity.class.getSimpleName())) {
+                firebaseHelper.deleteArticle(data.get(getAdapterPosition()).getId());
+            }
+            return false;
         }
     }
 }

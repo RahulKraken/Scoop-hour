@@ -41,7 +41,6 @@ public class ActivitySignIn extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
                         FirebaseHelper helper = new FirebaseHelper(getApplicationContext());
-                        helper.commit(new Bundle());
                         startActivity(new Intent(getApplicationContext(), ForYouActivity.class));
                     } else {
                         Toast.makeText(getApplicationContext(), "Error signing up!", Toast.LENGTH_LONG).show();

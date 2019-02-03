@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project-News</string>
+    <string name="app_name">Scoop Hour</string>
     <string name="error_message_json_recieving">Error getting json from the link</string>
     <string name="splash_screen_label">Splash Screen</string>
 
@@ -28,12 +28,12 @@
 
     <!-- Firebase database node keys -->
     <string name="node_articles">articles</string>
-    <string name="node_read_later">read_later</string>
-    <string name="node_counter">num_read_later_articles</string>
+    <string name="node_read_later">bookmarked</string>
+    <string name="node_counter">num_bookmarked_articles</string>
 
     <!-- SharedPreferences keys -->
-    <string name="num_read_later_articles">num_read_later_articles</string>
+    <string name="num_read_later_articles">num_bookmarked_articles</string>
     <string name="firebase_preference_title">firebase_preferences</string>
-    <string name="read_later_menu_label">Read Later</string>
-    <string name="read_later_action_bar_title">Read Later</string>
+    <string name="read_later_menu_label">Bookmarked</string>
+    <string name="read_later_action_bar_title">Bookmarked</string>
 </resources>
