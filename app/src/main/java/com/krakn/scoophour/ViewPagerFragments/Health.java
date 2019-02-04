@@ -53,9 +53,9 @@ public class Health extends Fragment {
             data = new ArrayList<>();
             NetworkUtils utils = new NetworkUtils();
             data = utils.returnContent(integers[0], null);
-            for (DataModel dataModel : data) {
-                Log.d("TAG", dataModel.getTitle() + "\t" + dataModel.getArticleUrl());
-            }
+//            for (DataModel dataModel : data) {
+//                Log.d("TAG", dataModel.getTitle() + "\t" + dataModel.getArticleUrl());
+//            }
             return null;
         }
 

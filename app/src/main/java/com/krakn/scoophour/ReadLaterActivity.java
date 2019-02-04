@@ -45,11 +45,17 @@ public class ReadLaterActivity extends AppCompatActivity {
         rlRecyclerView = findViewById(R.id.rlRecyclerView);
 
         data = new ArrayList<>();
+
+        final RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, ReadLaterActivity.this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ReadLaterActivity.this);
+        rlRecyclerView.setAdapter(adapter);
+        rlRecyclerView.setLayoutManager(layoutManager);
         rlProgressBar.setVisibility(View.VISIBLE);
 
         FirebaseHelper.readLaterRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                data.clear();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (ds.getValue() != null) {
                         data.add(ds.getValue(DataModel.class));
@@ -57,10 +63,7 @@ public class ReadLaterActivity extends AppCompatActivity {
                     Log.d(TAG, "onDataChange: " + Objects.requireNonNull(ds.getValue()).toString());
                 }
                 rlProgressBar.setVisibility(View.INVISIBLE);
-                RecyclerViewAdapter adapter = new RecyclerViewAdapter(data, ReadLaterActivity.this);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ReadLaterActivity.this);
-                rlRecyclerView.setAdapter(adapter);
-                rlRecyclerView.setLayoutManager(layoutManager);
+                adapter.notifyDataSetChanged();
             }
 
             @Override

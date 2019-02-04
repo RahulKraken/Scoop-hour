@@ -10,6 +10,8 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
+import com.krakn.scoophour.ContentRecievers.Constants;
+
 public class ArticleContent extends AppCompatActivity {
 
     private String title, url;
@@ -58,7 +60,7 @@ public class ArticleContent extends AppCompatActivity {
     public void fabClicked(View view) {
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
-        String shareString = "Check out this new exciting story on Project-news app " + "\"" + title + "\"\t" + url;
+        String shareString = "Check out this new exciting story on Scoop Hour " + Constants.APP_LINK + " \"" + title + "\"\t" + url;
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Article");
         shareIntent.putExtra(Intent.EXTRA_TEXT, shareString);
         startActivity(Intent.createChooser(shareIntent, "Share using"));

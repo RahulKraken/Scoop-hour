@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Constants {
 
+    public static final String APP_LINK = "https://play.google.com/store/apps/details?id=com.krakn.scoophour";
     // BASE URL FOR THE API
     public final String BASE_URL = "https://newsapi.org/v2/";
     // API KEY
