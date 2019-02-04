@@ -16,6 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class FirebaseHelper {
     /**
      * This is a helper class for Firebase Database Transactions.
@@ -102,22 +104,38 @@ public class FirebaseHelper {
 
         @Override
         protected Void doInBackground(DataModel... dataModels) {
-            DataModel model = new DataModel(READ_LATER_COUNT,
+            final DataModel model = new DataModel(READ_LATER_COUNT,
                     dataModels[0].getTitle(),
                     dataModels[0].getDescription(),
                     dataModels[0].getImageUrl(),
                     dataModels[0].getArticleUrl(),
                     dataModels[0].getSourceName());
-            readLaterRef.child(String.valueOf(model.getId())).setValue(model);
-            READ_LATER_COUNT = READ_LATER_COUNT + 1;
-            counterRef.setValue(READ_LATER_COUNT);
-            return null;
-        }
+            readLaterRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    boolean alreadyAdded = false;
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        if (ds.child("articleUrl").getValue() == model.getArticleUrl()) {
+                            alreadyAdded = true;
+                        }
+                        Log.d(TAG, "onDataChange: " + Objects.requireNonNull(ds.getValue()).toString());
+                    }
+                    if (!alreadyAdded) {
+                        readLaterRef.child(String.valueOf(READ_LATER_COUNT)).setValue(model);
+                        READ_LATER_COUNT = READ_LATER_COUNT + 1;
+                        counterRef.setValue(READ_LATER_COUNT);
+                        Toast.makeText(context, "Article Bookmarked", Toast.LENGTH_SHORT).show();
+                    } else {
+//                        Toast.makeText(context, "Article is already Bookmarked!", Toast.LENGTH_LONG).show();
+                    }
+                }
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            Toast.makeText(context, "Article Bookmarked", Toast.LENGTH_SHORT).show();
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+            return null;
         }
     }
 
