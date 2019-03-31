@@ -9,10 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.krakn.scoophour.ContentRecievers.Constants;
 import com.krakn.scoophour.ViewPagerFragments.Business;
@@ -22,7 +20,6 @@ import com.krakn.scoophour.ViewPagerFragments.Health;
 import com.krakn.scoophour.ViewPagerFragments.Science;
 import com.krakn.scoophour.ViewPagerFragments.Sports;
 import com.krakn.scoophour.ViewPagerFragments.Technology;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,12 +37,17 @@ public class ForYouActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_for_you);
 
+        /*
+          FireBase connections removed due to privacy policy concerns on google play
+         */
+        /*
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             Toast.makeText(this, FirebaseAuth.getInstance().getCurrentUser().getEmail(),
                     Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "No user signed in!", Toast.LENGTH_LONG).show();
         }
+        */
 
         // Initializing Constants object.
         constants = new Constants();
@@ -77,10 +79,15 @@ public class ForYouActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.for_you_activity_overflow_menu, menu);
+        /*
+          FireBase connections removed due to privacy policy concerns on google play
+         */
+        /*
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             menu.add(0, 1, 0, getResources().getString(R.string.read_later_menu_label));
             menu.add(0, 2, 0, getResources().getString(R.string.log_out_menu_item_label));
         }
+        */
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -95,9 +102,9 @@ public class ForYouActivity extends AppCompatActivity {
             case R.id.action_search:
                 startActivity(new Intent(getApplicationContext(), SearchActivity.class));
                 break;
-            case 2:
-                logout();
-                break;
+//            case 2:
+//                logout();
+//                break;
             case 1:
                 actionReadLater();
                 break;
@@ -109,12 +116,17 @@ public class ForYouActivity extends AppCompatActivity {
         startActivity(new Intent(this, ReadLaterActivity.class));
     }
 
+    /*
+    FireBase connections removed due to privacy policy concerns on google play
+    */
+    /*
     private void logout() {
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(this, AuthorisationActivity.class));
         finish();
         Log.d(TAG, "logout: User logged out");
     }
+    */
 
     //-----------------------------------------------------View Pager-------------------------------------------------------
 

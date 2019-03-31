@@ -59,6 +59,7 @@
 
             </LinearLayout>
 
+            <!--
             <ImageView
                 android:layout_weight="1"
                 android:id="@+id/bookmark_btn"
@@ -70,6 +71,7 @@
                 android:gravity="center"
                 android:layout_gravity="center|center_horizontal"
                 android:src="@drawable/ic_bookmark_deactivated" />
+                -->
 
         </LinearLayout>
 

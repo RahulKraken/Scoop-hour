@@ -24,7 +24,7 @@ import java.util.Objects;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private static final String TAG = "RecyclerViewAdapter";
-    private FirebaseHelper firebaseHelper;
+//    private FirebaseHelper firebaseHelper;
 
     // Needed to provide content to the viewHolder to populate it.
     private List<DataModel> data;
@@ -37,7 +37,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.context = context;
         if (context != null) {
             inflater = LayoutInflater.from(context);
-            firebaseHelper = new FirebaseHelper(context);
+//            firebaseHelper = new FirebaseHelper(context);
             Log.d(TAG, "RecyclerViewAdapter: " + Objects.requireNonNull(context).getClass().getSimpleName());
         }
     }
@@ -80,66 +80,60 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             tv_title = itemView.findViewById(R.id.tv_title);
             tv_desc = itemView.findViewById(R.id.tv_desc);
             img_main = itemView.findViewById(R.id.img_main);
-            img_bookmark = itemView.findViewById(R.id.bookmark_btn);
+//            img_bookmark = itemView.findViewById(R.id.bookmark_btn);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
-            img_bookmark.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    DataModel article = data.get(getAdapterPosition());
-                    firebaseHelper.addArticleReadLater(article);
-                }
-            });
+//            img_bookmark.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    DataModel article = data.get(getAdapterPosition());
+//                    firebaseHelper.addArticleReadLater(article);
+//                }
+//            });
         }
 
         @Override
         public void onClick(View v) {
             Log.d(TAG, "onClick: " + context.getClass().getSimpleName());
             // Do this when an item in the recycler View is clicked.
-            if (v.getId() != R.id.bookmark_btn) {
-                // Anything in the layout but the bookmark button is clicked, it opens the article in a web view.
-                if (context.getClass().getSimpleName().equals(ForYouActivity.class.getSimpleName())) {
-                    // If activity is invoked from ForYouActivity
-                    Intent intent = new Intent(context, ArticleContent.class);
-                    intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
-                    intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
+            // Anything in the layout but the bookmark button is clicked, it opens the article in a web view.
+            if (context.getClass().getSimpleName().equals(ForYouActivity.class.getSimpleName())) {
+                // If activity is invoked from ForYouActivity
+                Intent intent = new Intent(context, ArticleContent.class);
+                intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
+                intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
 
-                    Log.d(TAG, "onClick: invoked article activity through forYouActivity context");
+                Log.d(TAG, "onClick: invoked article activity through forYouActivity context");
 
-                    context.startActivity(intent);
-                } else if (context.getClass().getSimpleName().equals(SearchActivity.class.getSimpleName())) {
-                    // If activity is invoked from SearchActivity
-                    Intent intent = new Intent(context, ArticleContent.class);
-                    intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
-                    intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
+                context.startActivity(intent);
+            } else if (context.getClass().getSimpleName().equals(SearchActivity.class.getSimpleName())) {
+                // If activity is invoked from SearchActivity
+                Intent intent = new Intent(context, ArticleContent.class);
+                intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
+                intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
 
-                    Log.d(TAG, "onClick: invoked article activity through SearchActivity context");
+                Log.d(TAG, "onClick: invoked article activity through SearchActivity context");
 
-                    context.startActivity(intent);
-                } else if (context.getClass().getSimpleName().equals(ReadLaterActivity.class.getSimpleName())) {
-                    // If activity is invoked from ReadLaterActivity
-                    Intent intent = new Intent(context, ArticleContent.class);
-                    intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
-                    intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
+                context.startActivity(intent);
+            } else if (context.getClass().getSimpleName().equals(ReadLaterActivity.class.getSimpleName())) {
+                // If activity is invoked from ReadLaterActivity
+                Intent intent = new Intent(context, ArticleContent.class);
+                intent.putExtra("URL", data.get(getAdapterPosition()).getArticleUrl());
+                intent.putExtra("TITLE", data.get(getAdapterPosition()).getTitle());
 
-                    Log.d(TAG, "onClick: invoked article activity through ReadLaterActivity context");
+                Log.d(TAG, "onClick: invoked article activity through ReadLaterActivity context");
 
-                    context.startActivity(intent);
-                } else {
-                    Toast.makeText(context, "something wrong happened", Toast.LENGTH_SHORT).show();
-                }
+                context.startActivity(intent);
             } else {
-                // The bookmark button is clicked and it will change it's color.
-                Toast.makeText(context, "I don't know what to do yet", Toast.LENGTH_LONG).show();
-                img_bookmark.setImageResource(R.drawable.ic_bookmark_activated);
+                Toast.makeText(context, "something wrong happened", Toast.LENGTH_SHORT).show();
             }
         }
 
         @Override
         public boolean onLongClick(View view) {
             Log.d(TAG, "onLongClick: " + context.getClass().getSimpleName());
-            if (view.getId() != R.id.bookmark_btn && context.getClass().getSimpleName().equals(ReadLaterActivity.class.getSimpleName())) {
-                firebaseHelper.deleteArticle(data.get(getAdapterPosition()).getId());
+            if (context.getClass().getSimpleName().equals(ReadLaterActivity.class.getSimpleName())) {
+//                firebaseHelper.deleteArticle(data.get(getAdapterPosition()).getId());
             }
             return false;
         }
