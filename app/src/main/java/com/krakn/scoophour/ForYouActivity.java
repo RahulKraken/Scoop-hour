@@ -11,6 +11,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.krakn.scoophour.ContentRecievers.Constants;
 import com.krakn.scoophour.ViewPagerFragments.Business;
@@ -61,6 +63,18 @@ public class ForYouActivity extends AppCompatActivity {
         ViewPager viewPager = findViewById(R.id.viewpager);
         tabLayout = findViewById(R.id.tabs);
 
+        final Intent intent = new Intent(this, ArticleContent.class);
+
+        toolbar.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                intent.putExtra("TITLE", "Privacy Policy");
+                intent.putExtra("URL", "file:///android_asset/privacy_policy.html");
+                startActivity(intent);
+                return true;
+            }
+        });
+
         // Setting up the view pager with the tab layout
         tabLayout.setupWithViewPager(viewPager);
         setUpTabTitles();
@@ -79,6 +93,7 @@ public class ForYouActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.for_you_activity_overflow_menu, menu);
+
         /*
           FireBase connections removed due to privacy policy concerns on google play
          */

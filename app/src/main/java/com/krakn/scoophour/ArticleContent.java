@@ -9,6 +9,7 @@ import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.krakn.scoophour.ContentRecievers.Constants;
 
@@ -35,7 +36,12 @@ public class ArticleContent extends AppCompatActivity {
 
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(String.valueOf(url));
+        try {
+            webView.loadUrl(String.valueOf(url));
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(this, "URL not reachable", Toast.LENGTH_SHORT).show();
+        }
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
